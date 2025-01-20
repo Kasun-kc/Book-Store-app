@@ -38,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _widgetOptions = [
     const HomeScreenContent(),
-    CartScreen(), // Make sure CartScreen is properly imported
-    Container(), // Placeholder for SettingsScreen
-    Container(), // Placeholder for another screen
+    CartScreen(),
+    Container(),
+    Container(),
   ];
 
   void _onItemTapped(int index) {
@@ -245,7 +245,7 @@ class HomeScreenContent extends StatelessWidget {
     }).toList();
 
     return Container(
-      color: Colors.grey[50], // Add subtle background color
+      color: Colors.grey[50],
       child: GridView.builder(
         padding: EdgeInsets.symmetric(
           horizontal: 8,
