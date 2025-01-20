@@ -49,9 +49,9 @@ Perfect for both beginners and experienced developers looking to expand their kn
         );
       },
       child: Card(
-        elevation: 3, // Slightly increased elevation
-        margin: EdgeInsets.symmetric(
-            horizontal: 6, vertical: 6), // Increased margin
+        elevation: 2, // Reduced elevation
+        margin:
+            EdgeInsets.symmetric(horizontal: 4, vertical: 4), // Reduced margin
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8), // Increased border radius
         ),
@@ -109,7 +109,7 @@ Perfect for both beginners and experienced developers looking to expand their kn
                   flex: 2,
                   child: Padding(
                     padding:
-                        EdgeInsets.fromLTRB(10, 8, 10, 8), // Adjusted padding
+                        EdgeInsets.fromLTRB(8, 6, 8, 6), // Adjusted padding
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,29 +122,29 @@ Perfect for both beginners and experienced developers looking to expand their kn
                               Text(
                                 title,
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 12, // Reduced font size
                                   fontWeight: FontWeight.bold,
-                                  height: 1.2,
+                                  height: 1.1, // Reduced line height
                                 ),
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              SizedBox(height: 3),
+                              SizedBox(height: 2), // Reduced spacing
                               Text(
                                 'by $author',
                                 style: TextStyle(
-                                  fontSize: 11,
+                                  fontSize: 10, // Reduced font size
                                   color: Colors.grey[600],
-                                  height: 1.2,
+                                  height: 1.1, // Reduced line height
                                 ),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),
-                              SizedBox(height: 4),
+                              SizedBox(height: 3), // Reduced spacing
                               Text(
                                 'LKR ${price.toStringAsFixed(2)}',
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.blueAccent[700],
                                 ),
@@ -152,10 +152,10 @@ Perfect for both beginners and experienced developers looking to expand their kn
                             ],
                           ),
                         ),
-                        SizedBox(height: 6),
+                        SizedBox(height: 4), // Reduced spacing
                         SizedBox(
                           width: double.infinity,
-                          height: 28, // Increased height
+                          height: 26, // Reduced height
                           child: ElevatedButton(
                             onPressed: () {
                               cartController.addToCart(this);

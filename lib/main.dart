@@ -56,8 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text('Book Store'),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(50.0),
-          child: Padding(
-            padding: EdgeInsets.all(8.0),
+          child: Container(
+            padding: EdgeInsets.fromLTRB(12, 8, 12, 12),
+            color: Colors.white,
             child: TextField(
               onChanged: (value) {
                 setState(() {
@@ -66,10 +67,20 @@ class _HomeScreenState extends State<HomeScreen> {
               },
               decoration: InputDecoration(
                 hintText: 'Search by book name or author',
+                hintStyle: TextStyle(color: Colors.grey[400]),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(color: Colors.grey[300]!),
                 ),
-                prefixIcon: Icon(Icons.search),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(color: Colors.grey[300]!),
+                ),
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                prefixIcon: Icon(Icons.search, color: Colors.grey[400]),
+                filled: true,
+                fillColor: Colors.grey[50],
               ),
             ),
           ),
@@ -233,16 +244,22 @@ class HomeScreenContent extends StatelessWidget {
           book.author.toLowerCase().contains(searchQuery);
     }).toList();
 
-    return GridView.builder(
-      padding: EdgeInsets.all(6), // Reduced padding
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 0.72, // Slightly increased ratio
-        crossAxisSpacing: 6, // Reduced spacing
-        mainAxisSpacing: 6, // Reduced spacing
+    return Container(
+      color: Colors.grey[50], // Add subtle background color
+      child: GridView.builder(
+        padding: EdgeInsets.symmetric(
+          horizontal: 8,
+          vertical: 12,
+        ),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 0.75,
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 12,
+        ),
+        itemCount: filteredBooks.length,
+        itemBuilder: (context, index) => filteredBooks[index],
       ),
-      itemCount: filteredBooks.length,
-      itemBuilder: (context, index) => filteredBooks[index],
     );
   }
 }

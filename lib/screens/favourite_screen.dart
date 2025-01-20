@@ -54,80 +54,109 @@ class FavouriteScreen extends StatelessWidget {
                   ],
                 ),
               )
-            : ListView.builder(
-                padding: EdgeInsets.all(8),
-                itemCount: favoriteController.favoriteBooks.length,
-                itemBuilder: (context, index) {
-                  final book = favoriteController.favoriteBooks[index];
-                  return Dismissible(
-                    key: Key(book.title),
-                    direction: DismissDirection.endToStart,
-                    onDismissed: (_) {
-                      favoriteController.toggleFavorite(book);
-                      Get.snackbar(
-                        'Removed from Favourites',
-                        '${book.title} has been removed',
-                        snackPosition: SnackPosition.BOTTOM,
-                        duration: Duration(seconds: 2),
-                      );
-                    },
-                    background: Container(
-                      alignment: Alignment.centerRight,
-                      padding: EdgeInsets.only(right: 20),
-                      color: Colors.red,
-                      child: Icon(Icons.delete, color: Colors.white),
-                    ),
-                    child: Card(
-                      elevation: 2,
-                      margin: EdgeInsets.symmetric(vertical: 4, horizontal: 2),
-                      child: ListTile(
-                        contentPadding: EdgeInsets.all(8),
-                        leading: Hero(
-                          tag: 'book-${book.title}-fav',
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(4),
-                            child: Image.network(
-                              book.imageUrl,
-                              width: 60,
-                              height: 90,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+            : Column(
+                children: [
+                  // Add hint message for swipe functionality
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    color: Colors.grey[50],
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.swipe_left_alt,
+                          color: Colors.grey[600],
+                          size: 20,
                         ),
-                        title: Text(
-                          book.title,
+                        SizedBox(width: 8),
+                        Text(
+                          'Swipe left to remove from favorites',
                           style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            color: Colors.grey[600],
+                            fontSize: 13,
                           ),
                         ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'by ${book.author}',
-                              style: TextStyle(fontSize: 14),
-                            ),
-                            SizedBox(height: 4),
-                            Text(
-                              'LKR ${book.price.toStringAsFixed(2)}',
-                              style: TextStyle(
-                                color: Colors.green[700],
-                                fontWeight: FontWeight.w500,
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: ListView.builder(
+                      padding: EdgeInsets.all(8),
+                      itemCount: favoriteController.favoriteBooks.length,
+                      itemBuilder: (context, index) {
+                        final book = favoriteController.favoriteBooks[index];
+                        return Dismissible(
+                          key: Key(book.title),
+                          direction: DismissDirection.endToStart,
+                          onDismissed: (_) {
+                            favoriteController.toggleFavorite(book);
+                            Get.snackbar(
+                              'Removed from Favourites',
+                              '${book.title} has been removed',
+                              snackPosition: SnackPosition.BOTTOM,
+                              duration: Duration(seconds: 2),
+                            );
+                          },
+                          background: Container(
+                            alignment: Alignment.centerRight,
+                            padding: EdgeInsets.only(right: 20),
+                            color: Colors.red,
+                            child: Icon(Icons.delete, color: Colors.white),
+                          ),
+                          child: Card(
+                            elevation: 2,
+                            margin: EdgeInsets.symmetric(
+                                vertical: 4, horizontal: 2),
+                            child: ListTile(
+                              contentPadding: EdgeInsets.all(8),
+                              leading: Hero(
+                                tag: 'book-${book.title}-fav',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(4),
+                                  child: Image.network(
+                                    book.imageUrl,
+                                    width: 60,
+                                    height: 90,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                              title: Text(
+                                book.title,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'by ${book.author}',
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                  SizedBox(height: 4),
+                                  Text(
+                                    'LKR ${book.price.toStringAsFixed(2)}',
+                                    style: TextStyle(
+                                      color: Colors.green[700],
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              trailing: IconButton(
+                                icon: Icon(Icons.shopping_cart_outlined),
+                                onPressed: () {
+                                  cartController.addToCart(book);
+                                },
                               ),
                             ),
-                          ],
-                        ),
-                        trailing: IconButton(
-                          icon: Icon(Icons.shopping_cart_outlined),
-                          onPressed: () {
-                            cartController.addToCart(book);
-                          },
-                        ),
-                      ),
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
+                  ),
+                ],
               ),
       ),
     );

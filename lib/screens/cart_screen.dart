@@ -31,6 +31,27 @@ class CartScreen extends StatelessWidget {
               )
             : Column(
                 children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    color: Colors.grey[100],
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.swipe_left_alt,
+                          color: Colors.grey[600],
+                          size: 20,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          'Swipe left to remove items',
+                          style: TextStyle(
+                            color: Colors.grey[600],
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   Expanded(
                     child: ListView.builder(
                       itemCount: cartController.cartItems.length,
