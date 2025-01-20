@@ -138,7 +138,7 @@ class FavouriteScreen extends StatelessWidget {
                                   Text(
                                     'LKR ${book.price.toStringAsFixed(2)}',
                                     style: TextStyle(
-                                      color: Colors.green[700],
+                                      color: Colors.blue[700],
                                       fontWeight: FontWeight.w500,
                                     ),
                                   ),

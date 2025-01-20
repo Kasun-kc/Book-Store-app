@@ -76,7 +76,7 @@ class BookDetailsPage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w600,
-                              color: Colors.green[700],
+                              color: Colors.blue[700],
                             ),
                           ),
                           SizedBox(height: 24),

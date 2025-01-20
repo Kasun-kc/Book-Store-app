@@ -95,7 +95,7 @@ class CartScreen extends StatelessWidget {
                                 'LKR ${book.price.toStringAsFixed(2)}',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.green[700],
+                                  color: Colors.blue[700],
                                 ),
                               ),
                             ),
@@ -134,7 +134,7 @@ class CartScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.green[700],
+                                  color: Colors.blue[700],
                                 ),
                               ),
                             ),
